@@ -1,0 +1,8 @@
+export const MAIN = '/'
+export const ABOUT = '/about'
+export const CATALOG = '/catalog'
+export const CONTACTS = '/contacts'
+export const HISTORY = '/history'
+export const OTZIV = '/otziv'
+export const PRODUCT = '/product'
+export const TEAM = '/team'

@@ -1,0 +1,176 @@
+header {
+    margin: 0 150px; /* Отступы слева и справа */
+    max-width: 1600px;
+    background-color: #bdbcbc;
+    color: #000000;
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+    border-radius: 8px; /* Скругленные углы */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    padding: 10px 0;
+    text-align: center;
+}
+.babyshka {
+    font-size: 30px;
+    font-weight: normal; 
+    position: absolute;
+    left: 0; 
+    top: 20px;
+    color: black;
+}
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    color: #000000;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Легкая тень текста */
+}
+
+.welcome-message {
+    font-style: italic;
+    margin-top: 10px;
+    color: #333;
+}
+
+.main-menu {
+    background-color: #f8f8f8;
+    padding: 15px 0;
+    margin: 20px 150px 0; /* Совпадает с отступами хедера */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.main-menu ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap; /* Для адаптивности */
+}
+
+.main-menu li {
+    margin: 0 15px;
+}
+
+.main-menu a {
+    padding: 8px 15px;
+    border-radius: 4px;
+    color: #000000;
+    font-size: 16px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease; /* Плавные переходы */
+}
+
+.main-menu a:hover {
+    background-color: #bdbcbc;
+    color: #fff;
+    transform: translateY(-2px); /* Легкий подъем при наведении */
+}
+
+.login-container {
+    margin-left: 1100px;
+    position: absolute;
+    top: 20px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background-color: #bdbcbc;
+    padding: 12px;
+    border-radius: 4px;
+    width: 270px;
+}
+
+.form-row {
+    display: flex;
+    align-items: center;
+}
+
+.form-row label {
+    font-size: 14px;
+    font-weight: bold;
+    width: 70px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.login-input {
+    flex: 1;
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    min-width: 0;
+}
+
+.spacer {
+    width: 70px;
+    padding-right: 10px;
+}
+.form-row:last-child {
+    justify-content: flex-end; /* Выравниваем кнопки по правому краю */
+    gap: 8px; /* Добавляем промежуток между кнопками */
+    margin-top: 5px; /* Небольшой отступ сверху */
+}
+
+.login-btn, .reg-btn {
+    background-color: #555;
+    color: white;
+    border: none;
+    padding: 5px 10px; /* Немного уменьшил padding для компактности */
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    border-radius: 3px;
+    transition: background-color 0.3s;
+    flex-shrink: 0; /* Запрещаем уменьшение кнопок */
+    height: 20px;
+}
+
+.login-btn:hover, .reg-btn:hover {
+    text-decoration: underline
+}
+.price-section{
+    background-color: #bdbcbc;
+}
+
+.search-container {
+    margin-left: 350px;
+    width: 100%;
+    max-width: 500px;
+
+} 
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    border-radius: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+
+}
+
+.search-input {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    background: #ffffff;
+}
+
+.search-btn {
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 12px;
+}

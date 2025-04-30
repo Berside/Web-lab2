@@ -1,0 +1,58 @@
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+.info-page {
+    width: 100%;
+    background-color: #bdbcbc;
+    max-width: 1560px;
+    flex-direction: column;
+}
+
+.info-section {
+    margin-bottom: 30px;
+}
+
+.info-section h2 {
+    color: #000000;
+    border-bottom: 2px solid #3498db;
+    padding-bottom: 5px;
+}
+
+.staff-table {
+    width: 100%;
+    margin: 20px 0;
+}
+
+.staff-table th {
+    background-color: #3498db;
+    color: #000000;
+    text-align: left;
+    padding: 10px;
+}
+
+.staff-table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+.staff-table tr:nth-child(even) {
+    background-color: #bdbcbc;;
+}
+
+.mission-list {
+    list-style-type: none; /* Убраны маркеры списка */
+    padding-left: 0;
+}
+
+.mission-list li {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #bdbcbc;;
+    border-left: 4px solid #3498db;
+}
