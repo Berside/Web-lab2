@@ -1,13 +1,13 @@
 header {
-    margin: 0 150px; /* Отступы слева и справа */
+    margin: 0 150px;
     max-width: 1600px;
     background-color: #bdbcbc;
     color: #000000;
     padding: 20px 0;
     text-align: center;
     position: relative;
-    border-radius: 8px; /* Скругленные углы */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Легкая тень */
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .header-content {
@@ -29,7 +29,7 @@ h1 {
     margin: 0;
     font-size: 2.5em;
     color: #000000;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); /* Легкая тень текста */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1); 
 }
 
 .welcome-message {
@@ -41,9 +41,8 @@ h1 {
 .main-menu {
     background-color: #f8f8f8;
     padding: 15px 0;
-    margin: 20px 150px 0; /* Совпадает с отступами хедера */
+    margin: 20px 150px 0; 
     border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .main-menu ul {
@@ -54,7 +53,7 @@ h1 {
     justify-content: center;
     max-width: 1200px;
     margin: 0 auto;
-    flex-wrap: wrap; /* Для адаптивности */
+    flex-wrap: wrap; 
 }
 
 .main-menu li {
@@ -68,13 +67,13 @@ h1 {
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
-    transition: all 0.3s ease; /* Плавные переходы */
+    transition: all 0.3s ease; 
 }
 
 .main-menu a:hover {
     background-color: #bdbcbc;
     color: #fff;
-    transform: translateY(-2px); /* Легкий подъем при наведении */
+    transform: translateY(-2px);
 }
 
 .login-container {
@@ -118,22 +117,22 @@ h1 {
     padding-right: 10px;
 }
 .form-row:last-child {
-    justify-content: flex-end; /* Выравниваем кнопки по правому краю */
-    gap: 8px; /* Добавляем промежуток между кнопками */
-    margin-top: 5px; /* Небольшой отступ сверху */
+    justify-content: flex-end;
+    gap: 8px; 
+    margin-top: 5px; 
 }
 
 .login-btn, .reg-btn {
     background-color: #555;
     color: white;
     border: none;
-    padding: 5px 10px; /* Немного уменьшил padding для компактности */
+    padding: 5px 10px; 
     cursor: pointer;
     font-weight: bold;
     font-size: 13px;
     border-radius: 3px;
     transition: background-color 0.3s;
-    flex-shrink: 0; /* Запрещаем уменьшение кнопок */
+    flex-shrink: 0;
     height: 20px;
 }
 
@@ -174,3 +173,7 @@ h1 {
     cursor: pointer;
     font-size: 12px;
 }
+.main-menu .active {
+    background-color: #bdbcbc;
+    font-weight: bold;
+  }

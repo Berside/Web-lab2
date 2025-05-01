@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import "./catalog.css";
 import {useNavigate} from "react-router-dom";
-import { MAIN, WEEK, PROFILE } from "../../utils/const";
+import { PRODUCT } from "../../utils/const";
 const catalog = observer(() => {
   const history = useNavigate();
   return (
@@ -14,7 +14,7 @@ const catalog = observer(() => {
             
             <div class="catalog-grid">
                 <div class="catalog-item">
-                    <a href="product1.html">
+                    <a onClick={() => history(PRODUCT)}>
                         <img src="https://yt3.googleusercontent.com/ytc/AIdro_mytclmZB2VrEl6fCNaaQ7wM4LCjS45Vu8prvMI0ZHKLQ=s900-c-k-c0x00ffffff-no-rj" alt="Galaxy Office"/>
                         <h3>Galaxy Office</h3>
                     </a>
