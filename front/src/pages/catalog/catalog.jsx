@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import "./catalog.css";
 import {useNavigate} from "react-router-dom";
-import { PRODUCT } from "../../utils/const";
+import { PRODUC1, PRODUCT } from "../../utils/const";
 const catalog = observer(() => {
   const history = useNavigate();
   return (
@@ -22,7 +22,7 @@ const catalog = observer(() => {
                 </div>
                 
                 <div class="catalog-item">
-                    <a href="product2.html">
+                    <a onClick={() => history(PRODUC1)}>
                         <img src="https://avatars.mds.yandex.net/i?id=36241b00cb954320bb4c903c68e8792d6da121bc-7763867-images-thumbs&n=13" alt="Galaxy Security"/>
                         <h3>Galaxy Security</h3>
                     </a>
@@ -34,7 +34,7 @@ const catalog = observer(() => {
                         <img src="https://avatars.mds.yandex.net/i?id=4a0a7fe8258b5b597deb414a393cc209-4566122-images-thumbs&n=13" alt="Galaxy DB"/>
                         <h3>Galaxy Database</h3>
                     </a>
-                    <p>Мощная система управления базами данных</p>
+                    <p>В разработке...</p>
                 </div>
                 
                 <div class="catalog-item">
@@ -42,7 +42,7 @@ const catalog = observer(() => {
                         <img src="https://softlogic.ai/media/img/design/partners/first.png" alt="Galaxy Analytics" />
                         <h3>Galaxy Analytics</h3>
                     </a>
-                    <p>Аналитика и бизнес-отчетность в реальном времени</p>
+                    <p>В разработке...</p>
                 </div>
             </div>
         </div>

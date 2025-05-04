@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import "./main.css";
 import { useNavigate } from "react-router-dom";
-import { MAIN, WEEK, PROFILE, PRODUCT } from "../../utils/const";
+import { MAIN, WEEK, PROFILE, PRODUCT, PRODUC1 } from "../../utils/const";
 
 const Main = observer(() => {
   const history = useNavigate();
@@ -31,7 +31,7 @@ const Main = observer(() => {
             </a>
           </div>
           <div className="product-item">
-            <a href="product2.html">
+            <a onClick={() => history(PRODUC1)}>
               <img 
                 src="https://avatars.mds.yandex.net/i?id=36241b00cb954320bb4c903c68e8792d6da121bc-7763867-images-thumbs&n=13" 
                 alt="Galaxy Security" 

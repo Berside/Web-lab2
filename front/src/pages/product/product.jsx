@@ -23,8 +23,8 @@ const Product = observer(() => {
         <div className="product-details">
           <div className="price-section">
             <h2>Galaxy Office Professional 2023</h2>
-            <span className="price">12 990 ₽</span>
-            <span className="old-price">15 990 ₽</span>
+            <span className="price">9 999 ₽</span>
+            <span className="old-price">11 999 ₽</span>
             <span className="discount">-20%</span>
             <button className="buy-button">Купить</button>
           </div>

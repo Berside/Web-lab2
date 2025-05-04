@@ -6,13 +6,18 @@ import otziv from "./pages/otziv/otziv"
 import product from "./pages/product/product"
 import team from "./pages/team/team"
 import main from "./pages/main/main"
-import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN } from "./utils/const"
+import Produc1 from "./pages/product/product2"
+import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1 } from "./utils/const"
 
 export const authRoutes = []
 export const publicRoutes = [
     {
         path: ABOUT,
         Component: about
+    },
+    {
+        path: PRODUC1,
+        Component: Produc1
     },
     {
         path: CATALOG,
