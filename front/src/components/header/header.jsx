@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import "./header.css";
 import { Context } from "../../index";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ABOUT, CATALOG, CONTACTS, HISTORY, MAIN, OTZIV, PRODUCT, TEAM, PRODUC1 } from "../../utils/const";
+import { ABOUT, CATALOG, CONTACTS, HISTORY, MAIN, OTZIV, PRODUCT, TEAM, PRODUC1, REG } from "../../utils/const";
 import { getAllContent } from "../../http/content";
 import { registration, login } from "../../http/UserApi";
 
@@ -120,9 +120,7 @@ const Hheader = observer(() => {
       } else {
         history(PRODUCT); 
       }
-    } else {
-      setSearchError("Точного совпадения не найдено. Попробуйте уточнить запрос.");
-    }
+     }
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -140,20 +138,6 @@ const Hheader = observer(() => {
     const commonWords = words1.filter(word => words2.includes(word));
     return commonWords.length / Math.max(words1.length, words2.length);
   };
-
-  const handleSubmitReg = async (e) => {
-    e.preventDefault();
-    try {
-        let data;
-        data = await registration(email, password);
-        user.setUser(user);
-        user.setIsAuth(true);
-        alert("Вы успешно зарегистрировались!");
-    } catch (e) {
-        console.log(e.response?.data?.message || 'Произошла ошибка');
-    }
-  };
-
   const handleSubmitLog = async (e) => {
     e.preventDefault();
     try {
@@ -204,7 +188,7 @@ const Hheader = observer(() => {
                 <div className="form-row">
                   <div className="spacer"></div>
                   <button type="button" className="login-btn" onClick={handleSubmitLog}>Авторизация</button>
-                  <button type="button" className="reg-btn" onClick={handleSubmitReg}>Регистрация</button>
+                  <button type="button" className="reg-btn" onClick={() => history(REG)}>Регистрация</button>
                 </div>
               </form>
             </div>

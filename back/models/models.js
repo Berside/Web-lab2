@@ -6,6 +6,8 @@ const User = sequelize.define('user', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     login: { type: DataTypes.STRING, unique: true, allowNull: false },
     password: { type: DataTypes.STRING, allowNull: false },
+    Name: { type: DataTypes.STRING, unique: true, allowNull: false },
+    Number: { type: DataTypes.STRING, unique: true, allowNull: false },
 });
 
 // Продукты
@@ -17,6 +19,32 @@ const Product = sequelize.define('product', {
     description: { type: DataTypes.TEXT },
     systemRequirements: { type: DataTypes.TEXT },
     characteristics: { type: DataTypes.TEXT },
+});
+
+const Tovar = sequelize.define('tovar', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    title: { type: DataTypes.STRING, allowNull: false },
+    price: { type: DataTypes.DECIMAL(10, 2), allowNull: false },
+    oldPrice: { type: DataTypes.DECIMAL(10, 2) },
+    discount: { type: DataTypes.INTEGER },
+    shortDescription: { type: DataTypes.TEXT },
+    fullDescription: { type: DataTypes.TEXT },
+    mainImageUrl: { type: DataTypes.TEXT, allowNull: false },
+    
+    // Характеристики
+    version: { type: DataTypes.STRING },
+    platforms: { type: DataTypes.STRING },
+    license: { type: DataTypes.STRING },
+    cloudStorage: { type: DataTypes.STRING },
+    
+    // Особенности продукта в JSON
+    features: { type: DataTypes.JSON }, // ["Антивирус", "Файервол", "VPN"...]
+    technologies: { type: DataTypes.JSON }, // ["ИИ-анализ поведения", "песочница"...]
+    advantages: { type: DataTypes.JSON }, // [{title: "...", description: "..."}, ...]
+    protectionStats: { type: DataTypes.JSON }, // ["100% обнаружение...", ...]
+    
+    // Награды
+    awards: { type: DataTypes.TEXT }
 });
 
 // Отзывы
@@ -55,5 +83,6 @@ module.exports = {
     Product,
     Review,
     Message,
-    Content
+    Content,
+    Tovar
 };

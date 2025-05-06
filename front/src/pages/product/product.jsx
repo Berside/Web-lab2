@@ -1,20 +1,50 @@
 import { observer } from "mobx-react-lite";
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "./product.css";
 import { useNavigate } from "react-router-dom";
 import { MAIN, WEEK, PROFILE } from "../../utils/const";
-
-const Product = observer(() => {
+import { getAllTovar } from "../../http/tovar";
+const Produc3 = observer(() => {
   const history = useNavigate();
+    const [productData, setProductData] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+  
+    useEffect(() => {
+      const fetchContent = async () => {
+        try {
+          const data = await getAllTovar();
+          if (data && data.length > 0) {
+            setProductData(data[1]); 
+          }
+        } catch (error) {
+          console.error("Ошибка при загрузке контента:", error);
+          setError("Ошибка при загрузке данных товара");
+        } finally {
+          setLoading(false);
+        }
+      };
+      
+      fetchContent();
+    }, []);
+  
+    if (loading) return <div className="loading">Загрузка...</div>;
+    if (error) return <div className="error">{error}</div>;
+    if (!productData) return <div className="error">Товар не найден</div>;
+  
+    const formatPrice = (price) => {
+      const number = typeof price === 'string' ? parseFloat(price) : price;
+      return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    };
   return (
-    <main className="product-page">
+<main className="product-page">
       <div className="product-container">
         <div className="product-gallery">
           <div className="main-image">
-            <a href="images/product1-full.jpg" target="_blank" rel="noopener noreferrer">
+            <a href={productData.mainImageUrl} target="_blank" rel="noopener noreferrer">
               <img 
-                src="https://yt3.googleusercontent.com/ytc/AIdro_mytclmZB2VrEl6fCNaaQ7wM4LCjS45Vu8prvMI0ZHKLQ=s900-c-k-c0x00ffffff-no-rj" 
-                alt="Galaxy Office" 
+                src={productData.mainImageUrl} 
+                alt={productData.title} 
               />
             </a>
           </div>
@@ -22,47 +52,63 @@ const Product = observer(() => {
         
         <div className="product-details">
           <div className="price-section">
-            <h2>Galaxy Office Professional 2023</h2>
-            <span className="price">9 999 ₽</span>
-            <span className="old-price">11 999 ₽</span>
-            <span className="discount">-20%</span>
+            <h2>{productData.title}</h2>
+            <span className="price">{formatPrice(productData.price)} ₽</span>
+            {productData.oldPrice && (
+              <span className="old-price">{formatPrice(productData.oldPrice)} ₽</span>
+            )}
+            {productData.discount && (
+              <span className="discount">-{productData.discount}%</span>
+            )}
             <button className="buy-button">Купить</button>
           </div>
           
           <section className="product-description">
             <h3><i className="icon-description"></i> Описание товара</h3>
-            <p><strong>Galaxy Office Professional 2023</strong> - это комплексное решение для офисной работы, включающее все необходимые инструменты для создания документов, таблиц, презентаций и управления проектами.</p>
-            <p>Новая версия получила улучшенный интерфейс, расширенные возможности совместной работы и встроенные инструменты искусственного интеллекта.</p>
+            <p><strong>{productData.title}</strong> - {productData.shortDescription}</p>
+            <p>{productData.fullDescription}</p>
           </section>
           
           <section className="product-specs">
             <h3><i className="icon-specs"></i> Характеристики товара</h3>
             <table className="specs-table">
               <tbody>
-                <tr>
-                  <td className="spec-name">Версия:</td>
-                  <td className="spec-value">2023 Professional</td>
-                </tr>
-                <tr>
-                  <td className="spec-name">Платформа:</td>
-                  <td className="spec-value">Windows, macOS, Linux</td>
-                </tr>
-                <tr>
-                  <td className="spec-name">Включает:</td>
-                  <td className="spec-value">Текстовый редактор, Таблицы, Презентации, Почта, Календарь</td>
-                </tr>
-                <tr>
-                  <td className="spec-name">Совместимость:</td>
-                  <td className="spec-value">MS Office, Google Docs, OpenDocument</td>
-                </tr>
-                <tr>
-                  <td className="spec-name">Облачное хранилище:</td>
-                  <td className="spec-value">50GB включено</td>
-                </tr>
-                <tr>
-                  <td className="spec-name">Языки:</td>
-                  <td className="spec-value">Русский, Английский, Немецкий, Французский</td>
-                </tr>
+                {productData.version && (
+                  <tr>
+                    <td className="spec-name">Версия:</td>
+                    <td className="spec-value">{productData.version}</td>
+                  </tr>
+                )}
+                {productData.platforms && (
+                  <tr>
+                    <td className="spec-name">Платформа:</td>
+                    <td className="spec-value">{productData.platforms}</td>
+                  </tr>
+                )}
+                {productData.features && productData.features.length > 0 && (
+                  <tr>
+                    <td className="spec-name">Включает:</td>
+                    <td className="spec-value">{productData.features.join(', ')}</td>
+                  </tr>
+                )}
+                {productData.license && (
+                  <tr>
+                    <td className="spec-name">Лицензия:</td>
+                    <td className="spec-value">{productData.license}</td>
+                  </tr>
+                )}
+                {productData.cloudStorage && (
+                  <tr>
+                    <td className="spec-name">Облачное хранилище:</td>
+                    <td className="spec-value">{productData.cloudStorage}</td>
+                  </tr>
+                )}
+                {productData.technologies && productData.technologies.length > 0 && (
+                  <tr>
+                    <td className="spec-name">Технологии:</td>
+                    <td className="spec-value">{productData.technologies.join(', ')}</td>
+                  </tr>
+                )}
               </tbody>
             </table>
           </section>
@@ -70,57 +116,18 @@ const Product = observer(() => {
       </div>
       
       <section className="full-description">
-        <h3><i className="icon-details"></i> Подробное описание товара</h3>
-        <p>Galaxy Office Professional 2023 - это новейшая версия нашего флагманского офисного пакета, разработанного с учетом потребностей современного бизнеса.</p>
-        
-        <h4>Основные возможности:</h4>
-        <ul className="features-list">
-          <li><strong>Полная поддержка форматов</strong> - работа с DOCX, XLSX, PPTX, ODT и другими популярными форматами</li>
-          <li><strong>Совместная работа</strong> - редактирование документов в реальном времени с коллегами</li>
-          <li><strong>Искусственный интеллект</strong> - умные подсказки, автоматическое форматирование, проверка стиля</li>
-          <li><strong>Расширенная аналитика</strong> - мощные инструменты для работы с данными в таблицах</li>
-          <li><strong>Интеграция с облаком</strong> - синхронизация между устройствами и доступ из любого места</li>
-        </ul>
-        
-        <div className="system-requirements">
-          <h4>Системные требования:</h4>
-          <table className="requirements-table">
-            <thead>
-              <tr>
-                <th>Компонент</th>
-                <th>Минимальные</th>
-                <th>Рекомендуемые</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>ОС</td>
-                <td>Windows 10 / macOS 10.15 / Ubuntu 20.04</td>
-                <td>Windows 11 / macOS 12 / Ubuntu 22.04</td>
-              </tr>
-              <tr>
-                <td>Процессор</td>
-                <td>1.6 GHz, 2 ядра</td>
-                <td>2.4 GHz, 4 ядра</td>
-              </tr>
-              <tr>
-                <td>Оперативная память</td>
-                <td>4 GB</td>
-                <td>8 GB</td>
-              </tr>
-              <tr>
-                <td>Место на диске</td>
-                <td>3 GB</td>
-                <td>5 GB</td>
-              </tr>
-              <tr>
-                <td>Разрешение экрана</td>
-                <td>1280×720</td>
-                <td>1920×1080</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {productData.advantages && productData.advantages.length > 0 && (
+          <>
+            <h4>Ключевые преимущества:</h4>
+            <ul className="features-list">
+              {productData.advantages.map((advantage, index) => (
+                <li key={index}>
+                  <strong>{advantage.title}</strong> - {advantage.description}
+                </li>
+              ))}
+            </ul>
+          </>
+        )}
       </section>
       
       <hr className="product-divider" />
@@ -128,4 +135,4 @@ const Product = observer(() => {
   );
 });
 
-export default Product;
+export default Produc3;

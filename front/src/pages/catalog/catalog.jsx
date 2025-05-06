@@ -3,8 +3,18 @@ import React from "react";
 import "./catalog.css";
 import {useNavigate} from "react-router-dom";
 import { PRODUC1, PRODUCT } from "../../utils/const";
+import { getAllTovar } from "../../http/tovar";
 const catalog = observer(() => {
   const history = useNavigate();
+    const fetchContent = async () => {
+      try {
+        const data = await getAllTovar();
+        console.log(data);
+      } catch (error) {
+        console.error("Ошибка при загрузке контента:", error);
+      }
+    };
+    fetchContent();
   return (
     <>
     <main class="fickus">

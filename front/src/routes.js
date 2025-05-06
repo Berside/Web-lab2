@@ -3,17 +3,22 @@ import catalog from "./pages/catalog/catalog"
 import contacts from "./pages/contacts/contacts"
 import his from "./pages/history/history"
 import otziv from "./pages/otziv/otziv"
-import product from "./pages/product/product"
+import Produc3 from "./pages/product/product"
 import team from "./pages/team/team"
 import main from "./pages/main/main"
 import Produc1 from "./pages/product/product2"
-import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1 } from "./utils/const"
+import RegistrationPage from "./pages/reg/reg"
+import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1, REG } from "./utils/const"
 
 export const authRoutes = []
 export const publicRoutes = [
     {
         path: ABOUT,
         Component: about
+    },
+    {
+        path: REG,
+        Component: RegistrationPage
     },
     {
         path: PRODUC1,
@@ -37,7 +42,7 @@ export const publicRoutes = [
     },
     {
         path: PRODUCT,
-        Component: product
+        Component: Produc3
     },
     {
         path: TEAM,
