@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./main.css";
 import { useNavigate } from "react-router-dom";
 import { PRODUCT, PRODUC1 } from "../../utils/const";
-
+import PrivacyPolicy from "../../components/Private";
 const products = [
   {
     id: 1,
@@ -45,6 +45,7 @@ const Main = observer(() => {
           <li><a href="#news1">Новая версия Galaxy Office 2023</a></li>
           <li><a href="#news2">Обновление системы безопасности</a></li>
           <li><a href="#news3">Набор новых сотрудников</a></li>
+          <li> <PrivacyPolicy/> </li>
         </ul>
       </aside>
       <section className="content">

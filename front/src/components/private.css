@@ -1,0 +1,15 @@
+.policy-btn, .download-btn {
+  background: #3498db;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+.policy-btn:hover, .download-btn:hover {
+  background: #2980b9;
+}

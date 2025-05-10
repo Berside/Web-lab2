@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./contacts.css";
 import { useNavigate } from "react-router-dom";
 import { CreateMessage } from "../../http/MessageAPI";
-
+import PrivacyPolicy from "../../components/Private";
 const Contacts = observer(() => {
   const history = useNavigate();
   const [formData, setFormData] = useState({
@@ -122,7 +122,7 @@ const Contacts = observer(() => {
           <p><strong>Телефон:</strong> +7 (495) 123-45-67</p>
           <p><strong>Email:</strong> info@galaxy-soft.ru</p>
           <p><strong>Режим работы:</strong> Пн-Пт: 9:00 - 18:00</p>
-          
+           <PrivacyPolicy/> 
           <h3>Карта</h3>
           <div className="map-container">
             <iframe 
