@@ -8,7 +8,8 @@ import team from "./pages/team/team"
 import main from "./pages/main/main"
 import Produc1 from "./pages/product/product2"
 import RegistrationPage from "./pages/reg/reg"
-import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1, REG } from "./utils/const"
+import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1, REG, CART } from "./utils/const"
+import cart from "./pages/cart/cart"
 
 export const authRoutes = []
 export const publicRoutes = [
@@ -51,5 +52,9 @@ export const publicRoutes = [
     {
         path: MAIN,
         Component: main
+    },
+        {
+        path: CART,
+        Component: cart
     },
 ]

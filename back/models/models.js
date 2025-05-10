@@ -1,7 +1,6 @@
 const sequelize = require('../db')
 const {DataTypes} = require('sequelize')
 
-// Пользователи
 const User = sequelize.define('user', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     login: { type: DataTypes.STRING, unique: true, allowNull: false },
@@ -10,7 +9,6 @@ const User = sequelize.define('user', {
     Number: { type: DataTypes.STRING, unique: true, allowNull: false },
 });
 
-// Продукты
 const Product = sequelize.define('product', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     imageUrl: { type: DataTypes.TEXT, allowNull: false },
@@ -30,24 +28,19 @@ const Tovar = sequelize.define('tovar', {
     shortDescription: { type: DataTypes.TEXT },
     fullDescription: { type: DataTypes.TEXT },
     mainImageUrl: { type: DataTypes.TEXT, allowNull: false },
-    
-    // Характеристики
     version: { type: DataTypes.STRING },
     platforms: { type: DataTypes.STRING },
     license: { type: DataTypes.STRING },
     cloudStorage: { type: DataTypes.STRING },
     
-    // Особенности продукта в JSON
-    features: { type: DataTypes.JSON }, // ["Антивирус", "Файервол", "VPN"...]
-    technologies: { type: DataTypes.JSON }, // ["ИИ-анализ поведения", "песочница"...]
-    advantages: { type: DataTypes.JSON }, // [{title: "...", description: "..."}, ...]
-    protectionStats: { type: DataTypes.JSON }, // ["100% обнаружение...", ...]
+    features: { type: DataTypes.JSON }, 
+    technologies: { type: DataTypes.JSON }, 
+    advantages: { type: DataTypes.JSON }, 
+    protectionStats: { type: DataTypes.JSON },
     
-    // Награды
     awards: { type: DataTypes.TEXT }
 });
 
-// Отзывы
 const Review = sequelize.define('review', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING, allowNull: false },
@@ -56,7 +49,6 @@ const Review = sequelize.define('review', {
     text: { type: DataTypes.TEXT },
 });
 
-// Сообщения
 const Message = sequelize.define('message', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     name: { type: DataTypes.STRING, allowNull: false },
@@ -66,7 +58,6 @@ const Message = sequelize.define('message', {
     department: { type: DataTypes.STRING, allowNull: false },
 });
 
-// Контент (ваша существующая модель)
 const Content = sequelize.define('content', {
     id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
     title: { type: DataTypes.STRING, allowNull: false },
@@ -74,7 +65,41 @@ const Content = sequelize.define('content', {
     http: { type: DataTypes.TEXT },
 });
 
-// Связи между моделями (если нужны)
+const Cart = sequelize.define('cart', {
+    id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
+    quantity: { 
+        type: DataTypes.INTEGER, 
+        allowNull: false, 
+        defaultValue: 1,
+        validate: {
+            min: 1
+        }
+    },
+});
+
+
+User.belongsToMany(Tovar, { 
+  through: Cart,
+  foreignKey: 'userId',
+  as: 'tovars' // Используем lowercase для соответствия сообщению об ошибке
+});
+
+Tovar.belongsToMany(User, {
+  through: Cart,
+  foreignKey: 'tovarId',
+  as: 'users'
+});
+
+Cart.belongsTo(Tovar, {
+  foreignKey: 'tovarId',
+  as: 'tovar'
+});
+
+Cart.belongsTo(User, {
+  foreignKey: 'userId',
+  as: 'user'
+});
+
 Product.hasMany(Review);
 Review.belongsTo(Product);
 
@@ -84,5 +109,6 @@ module.exports = {
     Review,
     Message,
     Content,
-    Tovar
+    Tovar,
+    Cart
 };

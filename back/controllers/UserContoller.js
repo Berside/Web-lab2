@@ -25,7 +25,7 @@ class UserController {
         const user = await User.create({login, role, password: hashPassword, Name, Number: Numberr})
         const favorite = await Favorite.create({userId: user.id})
         const token = generateJwt(user.id, user.login, user.role)
-        return res.json({token})
+        return [res.json({token}), user.id]
     }
 
     async login(req, res, next) {
@@ -39,7 +39,7 @@ class UserController {
             return next(ApiError.internal('Указан неверный пароль'))
         }
         const token = generateJwt(user.id, user.login, user.role)
-        return res.json({token})
+        return [res.json({token}), user.id]
     }
 
     async check(req, res, next) {
@@ -57,6 +57,29 @@ class UserController {
             next(error)
         }
     }
+      async getUserIdByEmail(req, res, next) {
+        try {
+            const {email} = req.query; // или req.body, в зависимости от вашего API
+            
+            if (!email) {
+                return next(ApiError.badRequest('Email не указан'));
+            }
+            
+            const user = await User.findOne({
+                where: {login: email}, // предполагая, что login - это email
+                attributes: ['id'] // получаем только ID
+            });
+            
+            if (!user) {
+                return next(ApiError.notFound('Пользователь с таким email не найден'));
+            }
+            
+            return res.json({userId: user.id});
+        } catch (e) {
+            return next(ApiError.internal('Ошибка при поиске пользователя'));
+        }
+    }
+
 }
 
 module.exports = new UserController()

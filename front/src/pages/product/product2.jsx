@@ -2,15 +2,16 @@ import { observer } from "mobx-react-lite";
 import React, { useState, useEffect } from "react";
 import "./product.css";
 import { useNavigate } from "react-router-dom";
-import { MAIN, WEEK, PROFILE } from "../../utils/const";
+import { MAIN } from "../../utils/const";
 import { getAllTovar } from "../../http/tovar";
-
+import { addToCart } from "../../http/cart";
 const Produc1 = observer(() => {
   const history = useNavigate();
   const [productData, setProductData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-
+const [isInCart, setIsInCart] = useState(false); 
+  const [isAdding, setIsAdding] = useState(false); 
   useEffect(() => {
     const fetchContent = async () => {
       try {
@@ -37,6 +38,28 @@ const Produc1 = observer(() => {
     const number = typeof price === 'string' ? parseFloat(price) : price;
     return Math.round(number).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
   };
+       const handleAddToCart = async () => {
+      if (!productData) return;
+      
+      setIsAdding(true);
+      try {
+        const userId = localStorage.getItem('id'); 
+        if (!userId) {
+          history(MAIN); 
+          return;
+        }
+        
+        await addToCart(userId, productData.id);
+        setIsInCart(true);
+        alert('Товар успешно добавлен в корзину!');
+      } catch (e) {
+        console.error('Ошибка при добавлении в корзину:', e);
+        alert('Произошла ошибка при добавлении в корзину');
+      } finally {
+        setIsAdding(false);
+      }
+    };
+  
   return (
     <main className="product-page">
       <div className="product-container">
@@ -61,7 +84,17 @@ const Produc1 = observer(() => {
             {productData.discount && (
               <span className="discount">-{productData.discount}%</span>
             )}
-            <button className="buy-button">Купить</button>
+              <div className="product-actions">
+              <button className="buy-button">Купить</button>
+              <button 
+                className={`add-to-cart-button ${isInCart ? 'in-cart' : ''}`}
+                onClick={handleAddToCart}
+                disabled={isAdding || isInCart}
+              >
+                {isAdding ? 'Добавление...' : 
+                 isInCart ? 'В корзине' : 'Добавить в корзину'}
+              </button>
+            </div>
           </div>
           
           <section className="product-description">

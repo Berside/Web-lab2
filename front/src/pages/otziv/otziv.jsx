@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import "./otziv.css";
 import { useNavigate } from "react-router-dom";
-import { MAIN, WEEK, PROFILE } from "../../utils/const";
 import { CreateReview } from "../../http/ReviewAPI";
 
 const Otziv = observer(() => {

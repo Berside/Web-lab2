@@ -2,7 +2,6 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import "./history.css";
 import {useNavigate} from "react-router-dom";
-import { MAIN, WEEK, PROFILE } from "../../utils/const";
 const his = observer(() => {
   const history = useNavigate();
   return (

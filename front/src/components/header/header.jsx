@@ -3,9 +3,9 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import "./header.css";
 import { Context } from "../../index";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ABOUT, CATALOG, CONTACTS, HISTORY, MAIN, OTZIV, PRODUCT, TEAM, PRODUC1, REG } from "../../utils/const";
+import { ABOUT, CATALOG, CONTACTS, HISTORY, MAIN, OTZIV, PRODUCT, TEAM, PRODUC1, REG, CART } from "../../utils/const";
 import { getAllContent } from "../../http/content";
-import { registration, login } from "../../http/UserApi";
+import { registration, login, getUserIdByEmail } from "../../http/UserApi";
 
 const Hheader = observer(() => {
   const { user } = useContext(Context);
@@ -141,10 +141,13 @@ const Hheader = observer(() => {
   const handleSubmitLog = async (e) => {
     e.preventDefault();
     try {
-        let data;
+        let data, response;
         data = await login(email, password);
         user.setUser(user);
         user.setIsAuth(true);
+        response = await getUserIdByEmail(email);
+        localStorage.setItem('id', response.userId);
+        console.log(response.userId);
         alert("Вы успешно авторизовались!");
     } catch (e) {
       console.log(e.response?.data?.message || 'Произошла ошибка');
@@ -266,6 +269,11 @@ const Hheader = observer(() => {
           <li>
             <a onClick={() => history(OTZIV)} className={isActive(OTZIV) ? 'active' : ''}>
               Отзывы
+            </a>
+          </li>
+            <li>
+            <a onClick={() => history(CART)} className={isActive(CART) ? 'active' : ''}>
+              Корзина
             </a>
           </li>
         </ul>
