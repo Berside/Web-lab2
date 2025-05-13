@@ -89,7 +89,6 @@ const RegistrationPage = observer(() => {
   Приложение А: Глоссарий терминов
   Приложение Б: Форма запроса на доступ к данным
   `;
-    // Открытие в новом окне
   const openPolicyWindow = () => {
     const policyWindow = window.open('', 'Политика Galaxy OS', 
       'width=900,height=700,scrollbars=1,resizable=1');

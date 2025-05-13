@@ -18,7 +18,6 @@ const Cart = observer(() => {
         const userId = localStorage.getItem('id');
         const data = await getUserCart(userId);
         setCartItems(data);
-        // Вычисляем общую сумму на клиенте
         const total = data.reduce((sum, item) => sum + (parseFloat(item.price) * item.quantity), 0);
         setTotalPrice(total);
         setLoading(false);

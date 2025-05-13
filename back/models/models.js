@@ -81,7 +81,7 @@ const Cart = sequelize.define('cart', {
 User.belongsToMany(Tovar, { 
   through: Cart,
   foreignKey: 'userId',
-  as: 'tovars' // Используем lowercase для соответствия сообщению об ошибке
+  as: 'tovars' 
 });
 
 Tovar.belongsToMany(User, {

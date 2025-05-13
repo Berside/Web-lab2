@@ -59,15 +59,15 @@ class UserController {
     }
       async getUserIdByEmail(req, res, next) {
         try {
-            const {email} = req.query; // или req.body, в зависимости от вашего API
+            const {email} = req.query; 
             
             if (!email) {
                 return next(ApiError.badRequest('Email не указан'));
             }
             
             const user = await User.findOne({
-                where: {login: email}, // предполагая, что login - это email
-                attributes: ['id'] // получаем только ID
+                where: {login: email},
+                attributes: ['id'] 
             });
             
             if (!user) {

@@ -29,23 +29,18 @@ class CartController {
 async getUserCart(req, res, next) {
     try {
         const { userId } = req.params;
-
-        // 1. Получаем записи корзины с информацией о товарах
         const cartItems = await Cart.findAll({
             where: { userId },
             include: [{
                 model: Tovar,
                 as: 'tovar',
-                attributes: ['id', 'title', 'price', 'mainImageUrl'] // Только существующие поля
+                attributes: ['id', 'title', 'price', 'mainImageUrl'] 
             }]
         });
 
-        // 2. Если корзина пуста
         if (!cartItems || cartItems.length === 0) {
             return res.json([]);
         }
-
-        // 3. Форматируем ответ
         const items = cartItems.map(item => ({
             ...item.tovar.get({ plain: true }),
             quantity: item.quantity,

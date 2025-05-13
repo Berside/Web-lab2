@@ -36,19 +36,19 @@ ul, ol {
 }
 
 ul {
-    list-style-type: none; /* Убраны маркеры списка */
+    list-style-type: none; 
 }
 
 ol {
-    list-style-type: none; /* Убраны маркеры списка */
+    list-style-type: none; 
 }
 
 ol.roman {
-    list-style-type: none; /* Убраны маркеры списка */
+    list-style-type: none; 
 }
 
 ol.alpha {
-    list-style-type: none; /* Убраны маркеры списка */
+    list-style-type: none; 
 }
 
 p {
@@ -64,10 +64,10 @@ em {
     font-style: italic;
 }
 a {
-    color: #000000; /* Цвет текста для всех ссылок */
-    font-size: 14px; /* Размер шрифта для всех ссылок */
-    font-weight: normal; /* Начертание шрифта для всех ссылок */
-    text-decoration: none; /* Убираем подчеркивание */
+    color: #000000; 
+    font-size: 14px; 
+    font-weight: normal; 
+    text-decoration: none; 
 }
 
 a:hover {

@@ -1,9 +1,8 @@
 import React from 'react';
-import privacyPolicyText from './privacy-policy.txt'; // Импортируем текстовый файл
+import privacyPolicyText from './privacy-policy.txt'; 
 import './private.css'
 import privacyPolicyPDF from './ПК Galaxy OS.pdf';
 const PrivacyPolicy = () => {
-  // Текст политики конфиденциальности
 const policyContent = `
 ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ GALAXY OS
 Версия 2.1 от 15 июля 2024 года
@@ -87,7 +86,6 @@ Email: privacy@galaxyos.com
 Приложение А: Глоссарий терминов
 Приложение Б: Форма запроса на доступ к данным
 `;
-  // Открытие в новом окне
 const openPolicyWindow = () => {
   const policyWindow = window.open('', 'Политика Galaxy OS', 
     'width=900,height=700,scrollbars=1,resizable=1');
@@ -180,7 +178,6 @@ const openPolicyWindow = () => {
     document.body.removeChild(link);
   };
 
-  // Скачивание файла
   const downloadPolicy = () => {
     const blob = new Blob([policyContent], {type: 'text/plain'});
     const url = URL.createObjectURL(blob);

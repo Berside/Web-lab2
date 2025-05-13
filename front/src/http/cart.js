@@ -19,7 +19,6 @@ export const removeFromCart = async (userId, tovarId) => {
     const {data} = await $host.delete(`api/v1/cart/${userId}/${tovarId}`);
     return data;
 }
-// Дополнительный метод для получения корзины с подсчетом общей суммы
 export const getCartWithTotal = async (userId) => {
     const {data} = await $host.get(`api/v1/cart/${userId}/with-total`);
     return data;

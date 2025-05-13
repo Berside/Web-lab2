@@ -12,8 +12,6 @@ class MessageController {
     async create(req, res, next) {
         try {
             const { name, email, subject, message, department } = req.body;
-            
-            // Логируем полученные данные для отладки
             console.log("Received data:", { name, email, subject, message, department });
     
             if (!name || !email || !subject || !message || !department) {
@@ -30,9 +28,8 @@ class MessageController {
     
             return res.json(newMessage);
         } catch (e) {
-            // Логируем полную ошибку для отладки
             console.error("Error in MessageController.create:", e);
-            return next(ApiError.internal(e.message)); // Возвращаем оригинальное сообщение ошибки
+            return next(ApiError.internal(e.message));
         }
     }
 }

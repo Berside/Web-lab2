@@ -2,7 +2,6 @@ const ApiError = require('../error/ApiError');
 const { Product } = require('../models/models');
 
 class ProductController {
-    // Получить все продукты (GET /products)
     async getAll(req, res, next) {
         try {
             const products = await Product.findAll();
@@ -11,8 +10,6 @@ class ProductController {
             return next(ApiError.internal('Ошибка при получении списка продуктов'));
         }
     }
-
-    // Получить один продукт по ID (GET /products/:id)
     async getOne(req, res, next) {
         try {
             const { id } = req.params;
@@ -27,8 +24,6 @@ class ProductController {
             return next(ApiError.internal('Ошибка при получении продукта'));
         }
     }
-
-    // Создать новый продукт (POST /products)
     async create(req, res, next) {
         try {
             const {
@@ -58,8 +53,6 @@ class ProductController {
             return next(ApiError.internal('Ошибка при создании продукта'));
         }
     }
-
-    // Обновить продукт по ID (PUT /products/:id)
     async update(req, res, next) {
         try {
             const { id } = req.params;
@@ -92,8 +85,6 @@ class ProductController {
             return next(ApiError.internal('Ошибка при обновлении продукта'));
         }
     }
-
-    // Удалить продукт по ID (DELETE /products/:id)
     async delete(req, res, next) {
         try {
             const { id } = req.params;

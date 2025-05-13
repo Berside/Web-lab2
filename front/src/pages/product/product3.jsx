@@ -17,7 +17,6 @@ useEffect(() => {
     try {
       const data = await getAllTovar();
       if (data) {
-        // Находим товар с ID 2
         const productWithId2 = data.find(item => item.id === 3);
         if (productWithId2) {
           setProductData(productWithId2);
