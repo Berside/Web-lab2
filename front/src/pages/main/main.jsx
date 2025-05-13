@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { useState } from "react";
 import "./main.css";
 import { useNavigate } from "react-router-dom";
-import { PRODUCT, PRODUC1 } from "../../utils/const";
+import { PRODUCT, PRODUC1, PRODUC3 } from "../../utils/const";
 import PrivacyPolicy from "../../components/Private";
 const products = [
   {
@@ -17,6 +17,20 @@ const products = [
     title: "Galaxy Security",
     description: "Комплексное решение для защиты ваших данных и системы",
     imageUrl: "https://avatars.mds.yandex.net/i?id=36241b00cb954320bb4c903c68e8792d6da121bc-7763867-images-thumbs&n=13",
+    link: PRODUC1
+  },
+    {
+    id: 3,
+    title: "Galaxy Database",
+    description: "Galaxy Database 2025 - это комплексное решение для хранение ваших цифровых данных.",
+    imageUrl: "https://avatars.mds.yandex.net/i?id=4a0a7fe8258b5b597deb414a393cc209-4566122-images-thumbs&n=13",
+    link: PRODUC3
+  },
+    {
+    id: 4,
+    title: "Galaxy Analytics",
+    description: "Комплексное решение для анализа ваших данных и системы. Товар пока в разработке.....",
+    imageUrl: "https://softlogic.ai/media/img/design/partners/first.png",
     link: PRODUC1
   }
 ];
@@ -45,7 +59,6 @@ const Main = observer(() => {
           <li><a href="#news1">Новая версия Galaxy Office 2023</a></li>
           <li><a href="#news2">Обновление системы безопасности</a></li>
           <li><a href="#news3">Набор новых сотрудников</a></li>
-          <li> <PrivacyPolicy/> </li>
         </ul>
       </aside>
       <section className="content">

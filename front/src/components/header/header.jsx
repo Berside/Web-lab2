@@ -3,7 +3,7 @@ import React, { useEffect, useState, useContext, useRef } from "react";
 import "./header.css";
 import { Context } from "../../index";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ABOUT, CATALOG, CONTACTS, HISTORY, MAIN, OTZIV, PRODUCT, TEAM, PRODUC1, REG, CART } from "../../utils/const";
+import { ABOUT, CATALOG, CONTACTS, HISTORY, MAIN, OTZIV, PRODUCT, TEAM, PRODUC1, REG, CART, PRODUC3 } from "../../utils/const";
 import { getAllContent } from "../../http/content";
 import { registration, login, getUserIdByEmail } from "../../http/UserApi";
 
@@ -51,7 +51,10 @@ const Hheader = observer(() => {
       const commonSuggestions = [
         "Galaxy Office",
         "Galaxy Security",
+        "Galaxy Database",
         "Офис",
+        "Данные",
+        "Хранение",
         "Безопасность",
         "Антивирус"
       ];
@@ -99,6 +102,11 @@ const Hheader = observer(() => {
       history(PRODUC1); 
       return;
     }
+        if (normalizedSearch.includes("galaxy database") || normalizedSearch.includes("данные") || normalizedSearch.includes("хранение")) {
+      history(PRODUC3); 
+      return;
+    }
+
 
     const bestMatch = content.reduce((best, item) => {
       if (!item || !item.title) return best;

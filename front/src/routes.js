@@ -3,12 +3,13 @@ import catalog from "./pages/catalog/catalog"
 import contacts from "./pages/contacts/contacts"
 import his from "./pages/history/history"
 import otziv from "./pages/otziv/otziv"
-import Produc3 from "./pages/product/product"
+import Produc4 from "./pages/product/product3"
+import Produc3 from "./pages/product/product.jsx"
 import team from "./pages/team/team"
 import main from "./pages/main/main"
 import Produc1 from "./pages/product/product2"
 import RegistrationPage from "./pages/reg/reg"
-import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1, REG, CART } from "./utils/const"
+import { ABOUT, CATALOG, CONTACTS, HISTORY, OTZIV, PRODUCT, TEAM, MAIN, PRODUC1, REG, CART, PRODUC3 } from "./utils/const"
 import cart from "./pages/cart/cart"
 
 export const authRoutes = []
@@ -52,6 +53,10 @@ export const publicRoutes = [
     {
         path: MAIN,
         Component: main
+    },
+        {
+        path: PRODUC3,
+        Component: Produc4
     },
         {
         path: CART,

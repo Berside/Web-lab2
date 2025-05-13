@@ -2,7 +2,7 @@ import { observer } from "mobx-react-lite";
 import React from "react";
 import "./catalog.css";
 import {useNavigate} from "react-router-dom";
-import { PRODUC1, PRODUCT } from "../../utils/const";
+import { PRODUC1, PRODUC3, PRODUCT } from "../../utils/const";
 import { getAllTovar } from "../../http/tovar";
 const catalog = observer(() => {
   const history = useNavigate();
@@ -40,11 +40,11 @@ const catalog = observer(() => {
                 </div>
                 
                 <div class="catalog-item">
-                    <a href="product3.html">
+                    <a  onClick={() => history(PRODUC3)}>
                         <img src="https://avatars.mds.yandex.net/i?id=4a0a7fe8258b5b597deb414a393cc209-4566122-images-thumbs&n=13" alt="Galaxy DB"/>
                         <h3>Galaxy Database</h3>
                     </a>
-                    <p>В разработке...</p>
+                    <p>Galaxy Database 2025 - это комплексное решение для хранение ваших цифровых данных.</p>
                 </div>
                 
                 <div class="catalog-item">
